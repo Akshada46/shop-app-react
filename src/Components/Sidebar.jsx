@@ -1,25 +1,21 @@
 import React from 'react';
 
 function Sidebar({ filters, setFilters }) {
-  const categories = ['Leather', 'Classic Watch', "Leather Man Watch", 'Trending Watch', 'Google', 'Womans Watch', 'Tables', 'ShopEngine'];
-  const colors = ['Red', 'Dark Blue'];
+  const categories = [{ name: 'Leather', quantity: 10 },
+  { name: 'Classic Watch', quantity: 8 },
+  { name: "Leather Man Watch", quantity: 6 },
+  { name: 'Trending Watch', quantity: 5 },
+  { name: 'Womans Watch', quantity: 4 },
+  { name: 'Tables', quantity: 7 },
+  { name: 'ShopEngine', quantity: 10 }];
+  const colors = [{ color: 'Red', quantity: 10 }, { color: 'Dark Blue', quantity: 8 }];
 
   return (
     <div>
-      {/* <h4>Price Filter</h4>
-      <input
-        className='color-info'
-        type="range"
-        min="10"
-        max="1000"
-        value={filters.price[1]}
-        onChange={(e) => setFilters({ ...filters, price: [10, +e.target.value] })}
-      />
-      <p>${filters.price[0]} - ${filters.price[1]} <button className='btn 11`' style={{ border: "none" }} onClick={() => setFilters({ ...filters, price: [50, 1000] })}>Reset</button></p> */}
 
-      <h4 className='mt-5'>Product Status</h4>
+      <h5 className='mt-2 ' style={{ marginLeft: "-40px" }}>Product Status</h5>
       <hr />
-      <div>
+      <div className='mt-3' style={{ textAlign: "left" }}>
         <input
           type="checkbox"
           checked={filters.onSale || false}
@@ -34,24 +30,55 @@ function Sidebar({ filters, setFilters }) {
       </div>
 
 
-      <h4 className='mt-4'>Categories</h4>
+      <h5 style={{ marginLeft: "-70px", marginTop: "30px" }}>Categories</h5>
       <hr />
-      <ul>
+
+      <ul  >
         {categories.map((category) => (
-          <p key={category}>
-            {category}
-          </p>
+          <li>
+            <div style={{ display: "flex", justifyContent: "space-between" }} key={category}>
+              <p style={{ textAlign: "left" }}>  {category.name}</p>
+              <div style={{
+                borderRadius: "5px",
+                border: "1px solid black",
+                width: "30px",
+                height: "20px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
+              }}>
+                {category.quantity}
+              </div>
+            </div>
+          </li>
         ))}
       </ul>
 
-      <h4>Filter by Color</h4>
-      <ul>
+      <h5>Filter by Color</h5>
+      <hr />
+
+      <div style={{ textAlign: "center" }}>
         {colors.map((color) => (
-          <p key={color}>
-            {color}
-          </p>
+          <div style={{ display: "flex", justifyContent: "space-between", textAlign: "right" }} key={color}>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <input style={{ marginRight: "8px" }} type="radio" />
+
+              <p style={{ margin: "0" }}>  {color.color}</p>
+            </div>
+            <div style={{
+              borderRadius: "5px",
+              border: "1px solid black",
+              width: "30px",
+              height: "20px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center"
+            }}>
+              {color.quantity}
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

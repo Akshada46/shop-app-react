@@ -20,32 +20,34 @@ import Main from './Components/Main';
 function App() {
 
   const [filters, setFilters] = useState({ price: [10, 1000] });
+  const [searchQuery, setSearchQuery] = useState('');
 
 
   return (
     <div className="App">
       <TopHeader />
       <BrowserRouter>
-        <Header />
+        <Header setSearchQuery={setSearchQuery} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/products" element={<Product />} />
           <Route path="/categories" element={<Categories />} />
-          <Route path="/contact" element={<Contact/>} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </BrowserRouter>
-      <Main filters={filters} setFilters={setFilters}/>
+
+      <Main filters={filters} setFilters={setFilters} />
 
       <div className="container mt-4">
         <div className="row">
           <div className="col-md-3">
-        
+
             <Sidebar filters={filters} setFilters={setFilters} />
-    
+
           </div>
           <div className="col-md-9">
-            <ProductGrid filters={filters} />
+            <ProductGrid filters={filters} searchQuery={searchQuery} />
           </div>
         </div>
       </div>

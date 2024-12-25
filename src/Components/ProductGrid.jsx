@@ -3,7 +3,7 @@ import ProductCard from './ProductCard';
 import Categories from './Categories';
 
 
-function ProductGrid({ filters }) {
+function ProductGrid({ filters, searchQuery }) {
     const [products, setProducts] = useState([]);
 
     const [filteredProducts, setFilteredProducts] = useState([]);
@@ -11,7 +11,7 @@ function ProductGrid({ filters }) {
 
 
     useEffect(() => {
-     
+
         const fetchProducts = async () => {
             const response = await fetch('https://fakestoreapi.com/products');
             const data = await response.json();
@@ -23,12 +23,19 @@ function ProductGrid({ filters }) {
     }, []);
 
     useEffect(() => {
-        // Apply price filtering based on the `filters` state
-        const filtered = products.filter(
-            product => product.price >= filters.price[0] && product.price <= filters.price[1]
-        );
+        let filtered = products;
+        if (filters.price) {
+            filtered = filtered.filter(
+                (product) => product.price >= filters.price[0] && product.price <= filters.price[1]
+            );
+        }
+        if (searchQuery) {
+            filtered = filtered.filter((product) =>
+                product.title.toLowerCase().includes(searchQuery.toLowerCase())
+            );
+        }
         setFilteredProducts(filtered);
-    }, [filters, products]); 
+    }, [filters, searchQuery, products]);
 
 
 

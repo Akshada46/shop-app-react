@@ -2,9 +2,9 @@ import React from "react";
 
 const TopHeader = () => {
     return (
-        <header className="bg-light py-3 ">
+        <header className="bg-light py-2">
             <div className="container " style={{ height: "40px" }}>
-                <div className="d-flex justify-content-between align-items-center p-2 bg-light ">
+                <div className="d-flex justify-content-between align-items-center p-1 bg-light ">
 
                     <div className="d-flex align-items-center">
                         <div>
@@ -16,12 +16,6 @@ const TopHeader = () => {
                             <span>+1 (402) 763 282 46</span>
                         </div>
                     </div>
-
-
-                    {/* <div className="d-flex align-items-center">
-                        <i className="bi bi-telephone-fill text-primary fs-5 me-2"></i>
-                        <span>+1 (402) 763 282 46</span>
-                    </div> */}
 
 
                     <div className="d-flex align-items-center">
@@ -39,7 +33,7 @@ const TopHeader = () => {
                             <option value="INR">₹ INR</option>
                         </select>
 
-                        {/* Settings Dropdown */}
+                      
                         <div className="dropdown">
                             <button
                                 className="btn dropdown-toggle"
