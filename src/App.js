@@ -40,7 +40,7 @@ function App() {
       <div className="container mt-4">
         <div className="row">
           <div className="col-md-3">
-       
+        
             <Sidebar filters={filters} setFilters={setFilters} />
     
           </div>
